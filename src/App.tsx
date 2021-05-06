@@ -2,7 +2,7 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 // @ts-ignore
-import DocumentsList from './Components/DocumentsList.ts'
+import DocumentsList from './Components/DocumentsList.tsx'
 
 function App() {
   return (
