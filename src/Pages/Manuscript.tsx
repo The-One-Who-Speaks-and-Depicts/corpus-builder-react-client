@@ -1,13 +1,13 @@
 import React from 'react';
 // @ts-ignore
-import DocumentsList from '../Components/DocumentsList.tsx';
+import DocumentsList from '../Components/ManuscriptsList.tsx';
 
 class Manuscript extends React.Component {
 	
 	render() {
 		return(
 		<div>
-			<DocumentsList />
+			<ManuscriptsList />
 		</div>
 	);
 	}

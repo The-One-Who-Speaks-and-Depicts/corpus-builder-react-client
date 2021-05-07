@@ -1,6 +1,6 @@
 import React from 'react';
 
-class DocumentsList extends React.Component {
+class ManuscriptsList extends React.Component {
 
 	state = {
 			error: null,
@@ -9,7 +9,7 @@ class DocumentsList extends React.Component {
 		}
 
 	componentDidMount() {
-	fetch("http://localhost:5000/api/v1/Document/names")
+	fetch("http://localhost:5000/api/v1/Manuscript/names")
 		.then(response => response.text())
 		.then(response => {
 			this.setState({items: response});
@@ -27,7 +27,7 @@ class DocumentsList extends React.Component {
 		const names = texts.map(t => <option>{t}</option>);
 		return (
 		<div>
-		{!isLoaded && <div>Documents loading...</div>}		
+		{!isLoaded && <div>Loading manuscripts...</div>}		
 		{isLoaded && !error &&
 			<select>
 				{names}
@@ -39,4 +39,4 @@ class DocumentsList extends React.Component {
 	}
 }
 
-export default DocumentsList;
+export default ManuscriptsList;
