@@ -1,16 +1,17 @@
-import React from 'react';
+import React, {useContext} from 'react';
 // @ts-ignore
 import ManuscriptsList from '../Components/ManuscriptsList.tsx';
+//@ts-ignore
+import {UserContext} from "../UserContext.tsx";
 
-class Manuscript extends React.Component {
-	
-	render() {
-		return(
-		<div>
-			<ManuscriptsList />
-		</div>
-	);
-	}
+
+export function Manuscript() {
+	const {user} = useContext(UserContext);
+	return (<div>
+	{user ?
+			<div>
+				<ManuscriptsList />
+			</div>
+			:
+			""}</div>);
 }
-
-export default Manuscript;

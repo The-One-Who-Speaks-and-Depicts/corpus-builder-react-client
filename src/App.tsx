@@ -4,7 +4,7 @@ import './App.css';
 //@ts-ignore
 import Main from './Pages/Main.tsx';
 // @ts-ignore
-import Manuscript from './Pages/Manuscript.tsx';
+import {Manuscript} from './Pages/Manuscript.tsx';
 // @ts-ignore
 import {login} from './utils/login.tsx';
 // @ts-ignore
