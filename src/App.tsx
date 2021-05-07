@@ -6,6 +6,8 @@ import Main from './Pages/Main.tsx';
 // @ts-ignore
 import {Manuscript} from './Pages/Manuscript.tsx';
 // @ts-ignore
+import {Sign} from './Pages/Sign.tsx';
+// @ts-ignore
 import {login} from './utils/login.tsx';
 // @ts-ignore
 import {UserContext} from './UserContext.tsx';
@@ -23,6 +25,9 @@ function App() {
             <li>
               <Link to="/">Main page</Link>
             </li>
+            <li>
+              <Link to="/sign/">Sign in/Sign up</Link>
+            </li>
             {user ?  
               <li>
                 <Link to="/manuscript/">Manuscripts</Link>
@@ -33,6 +38,7 @@ function App() {
         </nav>        
         <Route path="/manuscript/" component={Manuscript} />
         <Route path="/" exact component={Main} />
+        <Route path="/sign/" component={Sign} />
       </UserContext.Provider>
     </Router>
   );
