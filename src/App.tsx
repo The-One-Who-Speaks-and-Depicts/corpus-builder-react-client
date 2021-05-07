@@ -6,7 +6,16 @@ import Manuscript from './Pages/Manuscript.tsx';
 
 function App() {
   return (
-    <Manuscript />
+    <Router>
+      <nav>
+        <ul>
+          <li>
+            <Link to="/manuscript/">Manuscripts</Link>
+          </li>
+        </ul>
+      </nav>
+      <Route path="/manuscript/" component={Manuscript} />
+    </Router>
   );
 }
 
