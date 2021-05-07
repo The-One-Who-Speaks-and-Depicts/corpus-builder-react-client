@@ -7,6 +7,8 @@ import Main from './Pages/Main.tsx';
 import Manuscript from './Pages/Manuscript.tsx';
 // @ts-ignore
 import {login} from './utils/login.tsx';
+// @ts-ignore
+import {UserContext} from './UserContext.tsx';
 
 function App() {
   return (
