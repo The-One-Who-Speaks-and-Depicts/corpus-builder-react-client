@@ -26,7 +26,7 @@ function App() {
               <Link to="/">Main page</Link>
             </li>
             <li>
-              <Link to="/sign/">Sign in</Link>
+              <Link to="/sign/">Sign in/Sign up</Link>
             </li>
             {user ?  
               <li>

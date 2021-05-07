@@ -1,16 +1,20 @@
-import React from 'react';
+import React, {useContext} from 'react';
+//@ts-ignore
+import {UserContext} from "../UserContext.tsx";
+//@ts-ignore
+import {login} from "../utils/login.tsx";
 
-class LoginForm extends React.Component {
 
-	
-	render(){
-		return (
+export function LoginForm() {
+	const {user, setUser} = useContext(UserContext);
+	return (
 		<div>
-			Login: <input type="text" required /><br />
-			Password: <input type="password" required /><br />
+			<form action="post">
+				Login: <input type="text" required /><br />
+				Password: <input type="password" required /><br />
+				<button onClick={async(e) => {e.preventDefault();const user = await login; setUser(user);}}>Submit</button>
+			</form>
+			
 		</div>
 		);
-	}
 }
-
-export default LoginForm;
