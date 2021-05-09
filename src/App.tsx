@@ -25,9 +25,6 @@ function App() {
             <li>
               <Link to="/">Main page</Link>
             </li>
-            <li>
-              <Link to="/sign/">Sign in/Sign up</Link>
-            </li>
             {user ?  
               <li>
                 <Link to="/manuscript/">Manuscripts</Link>
