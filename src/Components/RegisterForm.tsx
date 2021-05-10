@@ -7,10 +7,18 @@ export function RegisterForm() {
 	return (
 		<div>
 			<form action="post">
-				Login: <input type="text" required /><br />
-				Password: <input type="password" required /><br />
-				Repeat password: <input type="password" required /><br />
-				<button onClick={async(e) => {e.preventDefault(); await register();}}>Register</button>
+				Login: <input id="register_login" type="text" required /><br />
+				Password: <input id="register_password" type="password" required /><br />
+				Repeat password: <input id="register_repeated_password" type="password" required /><br />
+				<button onClick={async(e) => {
+					e.preventDefault(); 
+					let login = (document.getElementById("register_login") as HTMLInputElement).value;
+					let password = (document.getElementById("register_password") as HTMLInputElement).value;
+					let repetition = (document.getElementById("register_repeated_password") as HTMLInputElement).value; 
+					await register(login, password, repetition);
+				}}>
+				Register
+				</button>
 			</form>
 			
 		</div>
