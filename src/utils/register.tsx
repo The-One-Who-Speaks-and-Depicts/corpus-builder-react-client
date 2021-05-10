@@ -6,9 +6,6 @@ export const register = async(login: string, password: string, repeatedPassword:
 				return true;
 			}
 			return false;
-		})
-		.then(response => {
-			return false;
 		});
 	return res;		
 };

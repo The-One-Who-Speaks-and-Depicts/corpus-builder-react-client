@@ -10,6 +10,7 @@ export function RegisterForm() {
 				Login: <input id="register_login" type="text" required /><br />
 				Password: <input id="register_password" type="password" required /><br />
 				Repeat password: <input id="register_repeated_password" type="password" required /><br />
+				<div id="response"></div>
 				<button onClick={async(e) => {
 					e.preventDefault(); 
 					let login = (document.getElementById("register_login") as HTMLInputElement).value;
