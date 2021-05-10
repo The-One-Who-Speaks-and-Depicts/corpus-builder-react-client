@@ -15,7 +15,8 @@ export function RegisterForm() {
 					let login = (document.getElementById("register_login") as HTMLInputElement).value;
 					let password = (document.getElementById("register_password") as HTMLInputElement).value;
 					let repetition = (document.getElementById("register_repeated_password") as HTMLInputElement).value; 
-					await register(login, password, repetition);
+					await register(login, password, repetition)
+					.then((value : any) => console.log(value));
 				}}>
 				Register
 				</button>
