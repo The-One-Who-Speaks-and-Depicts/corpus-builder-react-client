@@ -8,8 +8,6 @@ import {Manuscript} from './Pages/Manuscript.tsx';
 // @ts-ignore
 import {Sign} from './Pages/Sign.tsx';
 // @ts-ignore
-import {login} from './utils/login.tsx';
-// @ts-ignore
 import {UserContext} from './UserContext.tsx';
 
 function App() {

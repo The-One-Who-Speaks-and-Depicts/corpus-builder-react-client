@@ -1,11 +1,9 @@
 import React, {useContext} from 'react';
-import {BrowserRouter as Router, Route, Redirect} from 'react-router-dom';
+import {Redirect} from 'react-router-dom';
 //@ts-ignore
 import {UserContext} from "../UserContext.tsx";
 //@ts-ignore
 import {login} from "../utils/login.tsx";
-//@ts-ignore
-import Main from "../Pages/Main.tsx";
 
 export function LoginForm() {
 	const {user, setUser} = useContext(UserContext);
