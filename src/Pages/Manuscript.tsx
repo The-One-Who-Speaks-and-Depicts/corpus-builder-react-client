@@ -1,6 +1,8 @@
 import React, {useContext} from 'react';
 // @ts-ignore
 import ManuscriptsList from '../Components/ManuscriptsList.tsx';
+// @ts-ignore
+import Main from './Main.tsx';
 //@ts-ignore
 import {UserContext} from "../UserContext.tsx";
 
@@ -13,5 +15,5 @@ export function Manuscript() {
 				<ManuscriptsList />
 			</div>
 			:
-			""}</div>);
+			<Main />}</div>);
 }
