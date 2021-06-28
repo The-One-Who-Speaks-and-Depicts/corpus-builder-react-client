@@ -2,7 +2,7 @@ import React, {useContext} from 'react';
 //@ts-ignore
 import {UserContext} from "../UserContext.tsx";
 // @ts-ignore
-import FieldsList from '../Components/FieldsList.tsx';
+import FieldForm from '../Components/FieldForm.tsx';
 //@ts-ignore
 import Main from "./Main.tsx";
 
@@ -13,7 +13,7 @@ export function Field() {
 	{user ?
 			<div>
 				<h2>Fields page</h2>
-				<FieldsList />
+				<FieldForm />
 			</div>
 			:
 			<Main />}</div>);
