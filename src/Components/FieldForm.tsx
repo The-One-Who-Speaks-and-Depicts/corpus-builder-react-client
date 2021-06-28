@@ -1,7 +1,7 @@
 import React from 'react';
 
-
 class FieldForm extends React.Component {
+
     render(){
         return (
             <div id="addField">
@@ -13,7 +13,7 @@ class FieldForm extends React.Component {
                     <input type="checkbox" id="restricted"  /> <span id="subscription">Ограничено ли множество значений пользователем, или значения уникальны и присваиваются в процессе ввода?:</span><br />
                     <span id="subscription">Значения признака:</span><br />
                     <textarea id="FieldVals"></textarea><br />
-                    <input type="checkbox" id="restricted"  /> <span id="subscription">Может ли одна единица обладать несколькими значениями признака?</span><br />                  
+                    <input type="checkbox" id="mulitplied"  /> <span id="subscription">Может ли одна единица обладать несколькими значениями признака?</span><br />                  
                     <span id="subscription">Единица, для которой размечается признак:</span><br />
                     <select id="host">
                         <option>Рукопись</option>
@@ -32,8 +32,6 @@ class FieldForm extends React.Component {
                         <option>Токен</option>
                         <option>Графема</option>
                     </select><br/>
-                    <button id="add">Добавить признак</button><br />
-                    <span id="message"></span><br />
             </div>
         );
     }
