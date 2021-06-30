@@ -55,6 +55,16 @@ const deleteField = async() => {
 	document.getElementById("message")!.innerText = message;
 };
 
+const editField = async() => {
+	let fieldHost: string = (document.getElementById("dbFields")! as HTMLSelectElement).options[(document.getElementById("dbFields")! as HTMLSelectElement).selectedIndex].value;
+	var res = await fetch("http://localhost:5000/api/v1/Field/one/?" + new URLSearchParams({name: fieldHost}), {method: 'GET'})
+		.then(response => response.json())
+		.then(response => {
+			return response;
+		});
+	document.getElementById("message")!.innerText = res.description;
+};
+
 
 export function Field() {
 	const {user} = useContext(UserContext);
@@ -62,9 +72,9 @@ export function Field() {
 	{user ?
 			<div>
 				<h2>Fields page</h2>
-				<div id="fieldsList"><FieldsList /></div><button id="editField">Изменить поле</button><button id="deleteField" onClick={() => deleteField()}>Удалить поле</button>
+				<div id="fieldsList"><FieldsList /></div><button id="editField" onClick={() => editField()}>Изменить поле</button><button id="deleteField" onClick={() => deleteField()}>Удалить поле</button>
 				<FieldForm />
-				<button id="changeField" onClick={() => postField()}>Внести изменения в базу данных</button><br />
+				<div id="insertionButton"><button id="changeField" onClick={() => postField()}>Внести изменения в базу данных</button></div><br />
 				<div id="message"></div>
 			</div>
 			:
