@@ -1,4 +1,5 @@
 import React, {useContext} from 'react';
+import ReactDOM from 'react-dom';
 //@ts-ignore
 import {UserContext} from "../UserContext.tsx";
 // @ts-ignore
@@ -28,11 +29,12 @@ const postField = async() => {
 				(document.getElementById("FieldVals")! as HTMLInputElement).value = "";
 				(document.getElementById("host")! as HTMLInputElement).value = "";
 				(document.getElementById("possessed")! as HTMLInputElement).value = "";
+				ReactDOM.render(<FieldsList />, document.getElementById("fieldsList"));
 				return true;
 			}
 			return false;
 		});
-	let message : string = res ? "Успешно! Обновите страницу, чтобы увидеть изменения" : "Произошла ошибка" ;
+	let message : string = res ? "Успешно!" : "Произошла ошибка" ;
 	document.getElementById("message")!.innerText = message;
 				
 };
