@@ -62,7 +62,47 @@ const editField = async() => {
 		.then(response => {
 			return response;
 		});
-	document.getElementById("message")!.innerText = res.description;
+	ReactDOM.render(<div><button id="changeField" onClick={() => patchField()}>Внести изменения в базу данных</button><button onClick={() => getBack()} id="returnToPost">Вернуться к созданию полей</button></div>, document.getElementById("insertionButton"));
+	(document.getElementById("FieldName")! as HTMLInputElement).value = (document.getElementById("dbFields")! as HTMLSelectElement).options[(document.getElementById("dbFields")! as HTMLSelectElement).selectedIndex].value;
+	(document.getElementById("FieldDesc")! as HTMLInputElement).value = res.description;
+	(document.getElementById("restricted")! as HTMLInputElement).checked = res.isUserFilled ? true : false;
+	(document.getElementById("FieldVals")! as HTMLInputElement).value = res.values.join("\n");
+	(document.getElementById("multiplied")! as HTMLInputElement).checked = res.isMultiple ? true : false;
+	(document.getElementById("host")! as HTMLSelectElement).value = res.host;
+	(document.getElementById("possessed")! as HTMLSelectElement).value = res.possessed;
+};
+
+const patchField = async() => {
+	document.getElementById("message")!.innerText = "";
+	let fieldName: string = (document.getElementById("FieldName")! as HTMLInputElement).value;
+	let fieldDesc: string = (document.getElementById("FieldDesc")! as HTMLInputElement).value;
+	let fieldRestricted: string = (document.getElementById("restricted")! as HTMLInputElement).checked ? "restricted" : "non-restricted";
+	let fieldVals: string = (document.getElementById("FieldVals")! as HTMLInputElement).value.replace("\n", "<br />");
+	let fieldMultiply: string = (document.getElementById("multiplied")! as HTMLInputElement).checked ? "multiplied" : "non-multiplied";
+	let fieldHost: string = (document.getElementById("host")! as HTMLSelectElement).options[(document.getElementById("host")! as HTMLSelectElement).selectedIndex].value;
+	let fieldPossessed: string = (document.getElementById("possessed")! as HTMLSelectElement).options[(document.getElementById("possessed")! as HTMLSelectElement).selectedIndex].value;
+	const res : boolean = await fetch("http://localhost:5000/api/v1/Field/?" + new URLSearchParams({name: fieldName, description: fieldDesc, multiplied: fieldMultiply, restricted: fieldRestricted, host: fieldHost, possessed: fieldPossessed, values: fieldVals}), {method: 'PATCH'})
+		.then(response => response.text())
+		.then(response => {
+			if (response === "Success") {
+				(document.getElementById("FieldName")! as HTMLInputElement).value = "";
+				(document.getElementById("FieldDesc")! as HTMLInputElement).value = "";
+				(document.getElementById("restricted")! as HTMLInputElement).checked = false;
+				(document.getElementById("multiplied")! as HTMLInputElement).checked = false;
+				(document.getElementById("FieldVals")! as HTMLInputElement).value = "";
+				(document.getElementById("host")! as HTMLInputElement).value = "";
+				(document.getElementById("possessed")! as HTMLInputElement).value = "";
+				ReactDOM.render(<FieldsList />, document.getElementById("fieldsList"));
+				return true;
+			}
+			return false;
+		});
+	let message : string = res ? "Успешно!" : "Произошла ошибка" ;
+	document.getElementById("message")!.innerText = message;
+};
+
+const getBack = async() => {
+	ReactDOM.render(<button id="changeField" onClick={() => postField()}>Внести изменения в базу данных</button>, document.getElementById("insertionButton"));
 };
 
 
