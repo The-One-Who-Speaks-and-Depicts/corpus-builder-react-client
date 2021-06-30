@@ -39,6 +39,22 @@ const postField = async() => {
 				
 };
 
+const deleteField = async() => {
+	document.getElementById("message")!.innerText = "";
+	let fieldHost: string = (document.getElementById("dbFields")! as HTMLSelectElement).options[(document.getElementById("dbFields")! as HTMLSelectElement).selectedIndex].value;
+	const res : boolean = await fetch("http://localhost:5000/api/v1/Field/?" + new URLSearchParams({id: fieldHost}), {method: 'DELETE'})
+		.then(response => response.text())
+		.then(response => {
+			if (response === "Success") {
+				ReactDOM.render(<FieldsList />, document.getElementById("fieldsList"));
+				return true;
+			}
+			return false;
+		});
+	let message : string = res ? "Успешно!" : "Произошла ошибка" ;
+	document.getElementById("message")!.innerText = message;
+};
+
 
 export function Field() {
 	const {user} = useContext(UserContext);
@@ -46,7 +62,7 @@ export function Field() {
 	{user ?
 			<div>
 				<h2>Fields page</h2>
-				<div id="fieldsList"><FieldsList /></div><button id="editField">Изменить поле</button><button id="deleteField">Удалить поле</button>
+				<div id="fieldsList"><FieldsList /></div><button id="editField">Изменить поле</button><button id="deleteField" onClick={() => deleteField()}>Удалить поле</button>
 				<FieldForm />
 				<button id="changeField" onClick={() => postField()}>Внести изменения в базу данных</button><br />
 				<div id="message"></div>

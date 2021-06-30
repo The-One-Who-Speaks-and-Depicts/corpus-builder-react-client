@@ -29,7 +29,7 @@ class FieldsList extends React.Component {
 		<div>
 		{!isLoaded && <div>Loading fields...</div>}		
 		{isLoaded && !error &&
-			<select>
+			<select id="dbFields">
 				{names}
 			</select>
 		}
