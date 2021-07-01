@@ -65,8 +65,8 @@ const editField = async() => {
 	ReactDOM.render(<div><button id="changeField" onClick={() => patchField()}>Внести изменения в базу данных</button><button onClick={() => getBack()} id="returnToPost">Вернуться к созданию полей</button></div>, document.getElementById("insertionButton"));
 	(document.getElementById("FieldName")! as HTMLInputElement).value = (document.getElementById("dbFields")! as HTMLSelectElement).options[(document.getElementById("dbFields")! as HTMLSelectElement).selectedIndex].value;
 	(document.getElementById("FieldDesc")! as HTMLInputElement).value = res.description;
-	(document.getElementById("restricted")! as HTMLInputElement).checked = res.isUserFilled ? true : false;
-	(document.getElementById("FieldVals")! as HTMLInputElement).value = res.values.join("\n");
+	(document.getElementById("restricted")! as HTMLInputElement).checked = res.isUserFilled ? false : true;
+	(document.getElementById("FieldVals")! as HTMLInputElement).value = res.isUserFilled? "" : res.values.join("\n");
 	(document.getElementById("multiplied")! as HTMLInputElement).checked = res.isMultiple ? true : false;
 	(document.getElementById("host")! as HTMLSelectElement).value = res.host;
 	(document.getElementById("possessed")! as HTMLSelectElement).value = res.possessed;
