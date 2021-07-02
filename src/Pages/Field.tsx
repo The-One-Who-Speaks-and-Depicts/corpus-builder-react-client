@@ -62,7 +62,7 @@ const editField = async() => {
 		.then(response => {
 			return response;
 		});
-	ReactDOM.render(<div><button id="changeField" onClick={() => patchField()}>Внести изменения в базу данных</button><button onClick={() => getBack()} id="returnToPost">Вернуться к созданию полей</button></div>, document.getElementById("insertionButton"));
+	ReactDOM.render(<div><button id="changeField" onClick={() => patchField()}>Внести изменения в базу данных</button><button onClick={() => getBackToPost()} id="returnToPost">Вернуться к созданию полей</button></div>, document.getElementById("insertionButton"));
 	(document.getElementById("FieldName")! as HTMLInputElement).value = (document.getElementById("dbFields")! as HTMLSelectElement).options[(document.getElementById("dbFields")! as HTMLSelectElement).selectedIndex].value;
 	(document.getElementById("FieldDesc")! as HTMLInputElement).value = res.description;
 	(document.getElementById("restricted")! as HTMLInputElement).checked = res.isUserFilled ? false : true;
@@ -101,7 +101,14 @@ const patchField = async() => {
 	document.getElementById("message")!.innerText = message;
 };
 
-const getBack = async() => {
+const getBackToPost = async() => {
+	(document.getElementById("FieldName")! as HTMLInputElement).value = "";
+	(document.getElementById("FieldDesc")! as HTMLInputElement).value = "";
+	(document.getElementById("restricted")! as HTMLInputElement).checked = false;
+	(document.getElementById("multiplied")! as HTMLInputElement).checked = false;
+	(document.getElementById("FieldVals")! as HTMLInputElement).value = "";
+	(document.getElementById("host")! as HTMLInputElement).value = "";
+	(document.getElementById("possessed")! as HTMLInputElement).value = "";				
 	ReactDOM.render(<button id="changeField" onClick={() => postField()}>Внести изменения в базу данных</button>, document.getElementById("insertionButton"));
 };
 
