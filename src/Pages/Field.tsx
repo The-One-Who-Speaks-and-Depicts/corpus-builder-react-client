@@ -6,6 +6,8 @@ import {UserContext} from "../UserContext.tsx";
 import FieldForm from '../Components/FieldForm.tsx';
 // @ts-ignore
 import FieldsList from '../Components/FieldsList.tsx';
+// @ts-ignore
+import FieldConnections from '../Components/FieldConnections.tsx';
 //@ts-ignore
 import Main from "./Main.tsx";
 
@@ -123,6 +125,9 @@ export function Field() {
 				<FieldForm />
 				<div id="insertionButton"><button id="changeField" onClick={() => postField()}>Внести изменения в базу данных</button></div><br />
 				<div id="message"></div>
+				<FieldConnections />
+				<div id="insertionConnectionButton"><button id="changeConnection" onClick={() => {}}>Внести изменения в базу данных</button></div><br />
+				<div id="connMessage"></div>
 			</div>
 			:
 			<Main />}</div>);
