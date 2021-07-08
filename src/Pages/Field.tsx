@@ -126,7 +126,8 @@ export function Field() {
 				<div id="insertionButton"><button id="changeField" onClick={() => postField()}>Внести изменения в базу данных</button></div><br />
 				<div id="message"></div>
 				<FieldConnections />
-				<div id="insertionConnectionButton"><button id="changeConnection" onClick={() => {}}>Внести изменения в базу данных</button></div><br />
+				<div id="insertionConnectionButton"><button id="changeConnection" onClick={() => {}}>Связать поля</button></div><br />
+				<div id="insertionConnectionButton"><button id="changeConnection" onClick={() => {}}>Удалить связи между полями</button></div><br />
 				<div id="connMessage"></div>
 			</div>
 			:
