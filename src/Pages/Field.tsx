@@ -114,6 +114,26 @@ const getBackToPost = async() => {
 	ReactDOM.render(<button id="changeField" onClick={() => postField()}>Внести изменения в базу данных</button>, document.getElementById("insertionButton"));
 };
 
+const addConnection = async() => {
+	let checkboxes : NodeListOf<Element> = document.querySelectorAll('#fieldConnector input');
+	let fieldMother : HTMLSelectElement = document.getElementById("fieldMother") as HTMLSelectElement;
+	let valueMother : HTMLSelectElement = document.getElementById("valueMother") as HTMLSelectElement;
+	let selectedKey : string = fieldMother.options[fieldMother.selectedIndex].text;
+	let selectedValue : string = valueMother.options[valueMother.selectedIndex].text;
+	for (let i = 0; i < checkboxes.length; i++)
+	{
+		if ((checkboxes[i] as HTMLInputElement).checked)
+		{
+			let conn : string = selectedKey + ":" + selectedValue + "=>" + checkboxes[i].id + ";\n";
+			let connectionsArea : HTMLElement = document.getElementById("connectionsArea") as HTMLElement;
+			if (!connectionsArea.innerText.includes(conn))
+			{
+				connectionsArea.innerText += conn;
+			}
+		}
+	}
+}
+
 
 export function Field() {
 	const {user} = useContext(UserContext);
@@ -126,8 +146,10 @@ export function Field() {
 				<div id="insertionButton"><button id="changeField" onClick={() => postField()}>Внести изменения в базу данных</button></div><br />
 				<div id="message"></div>
 				<FieldConnections />
-				<div id="insertionConnectionButton"><button id="changeConnection" onClick={() => {}}>Связать поля</button></div><br />
-				<div id="insertionConnectionButton"><button id="changeConnection" onClick={() => {}}>Удалить связи между полями</button></div><br />
+				<div id="addingConnectionButton"><button id="addConnection" onClick={() => addConnection()}>Добавить связь</button></div><br />
+				<div id="connectionsArea"></div>
+				<div id="deletingConnectionButton"><button id="insertConnection" onClick={() => {}}>Связать поля</button></div><br />
+				<div id="insertionConnectionButton"><button id="deleteConnection" onClick={() => {}}>Удалить связи между полями</button></div><br />
 				<div id="connMessage"></div>
 			</div>
 			:
