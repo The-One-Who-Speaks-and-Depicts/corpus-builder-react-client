@@ -134,6 +134,41 @@ const addConnection = async() => {
 	}
 }
 
+const insertConnections = async() => {
+	document.getElementById("connMessage")!.innerText = "Отправка запроса...";
+	let conns : string = (document.getElementById("connectionsArea") as HTMLElement).innerText;
+	const res : boolean = await fetch("http://localhost:5000/api/v1/Field/connection?" + new URLSearchParams({conns: conns}), {method: 'POST'})
+		.then(response => response.text())
+		.then(response => {
+			if (response === "Success") {
+				(document.getElementById("connectionsArea")! as HTMLElement).innerText = "";
+				ReactDOM.render(<FieldsList />, document.getElementById("fieldsList"));
+				return true;
+			}
+			return false;
+		});
+	let message : string = res ? "Успешно!" : "Произошла ошибка" ;
+	document.getElementById("connMessage")!.innerText = message;
+}
+
+const deleteConnections = async() => {
+	document.getElementById("connMessage")!.innerText = "Отправка запроса...";
+	let conns : string = (document.getElementById("connectionsArea") as HTMLElement).innerText;
+	const res : boolean = await fetch("http://localhost:5000/api/v1/Field/connection?" + new URLSearchParams({conns: conns}), {method: 'DELETE'})
+		.then(response => response.text())
+		.then(response => {
+			if (response === "Success") {
+				(document.getElementById("connectionsArea")! as HTMLElement).innerText = "";
+				ReactDOM.render(<FieldsList />, document.getElementById("fieldsList"));
+				return true;
+			}
+			return false;
+		});
+	let message : string = res ? "Успешно!" : "Произошла ошибка" ;
+	document.getElementById("connMessage")!.innerText = message;
+}
+
+
 
 export function Field() {
 	const {user} = useContext(UserContext);
@@ -149,8 +184,8 @@ export function Field() {
 				<div id="addingConnectionButton"><button id="addConnection" onClick={() => addConnection()}>Добавить связь</button></div><br />
 				<div id="connectionsArea"></div>
 				<div id="erasingConnectionButton"><button id="eraseConnection" onClick={() => {(document.getElementById("connectionsArea") as HTMLElement).innerText = "";}}>Удалить указанные связи</button></div><br />				
-				<div id="insertionConnectionButton"><button id="insertConnection" onClick={() => {}}>Связать поля</button></div><br />
-				<div id="deletingConnectionButton"><button id="deleteConnection" onClick={() => {}}>Удалить связи между полями</button></div><br />
+				<div id="insertionConnectionButton"><button id="insertConnection" onClick={() => insertConnections()}>Связать поля</button></div><br />
+				<div id="deletingConnectionButton"><button id="deleteConnection" onClick={() => deleteConnections()}>Удалить связи между полями</button></div><br />
 				<div id="connMessage"></div>
 			</div>
 			:
