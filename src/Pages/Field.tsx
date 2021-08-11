@@ -148,8 +148,9 @@ export function Field() {
 				<FieldConnections />
 				<div id="addingConnectionButton"><button id="addConnection" onClick={() => addConnection()}>Добавить связь</button></div><br />
 				<div id="connectionsArea"></div>
-				<div id="deletingConnectionButton"><button id="insertConnection" onClick={() => {}}>Связать поля</button></div><br />
-				<div id="insertionConnectionButton"><button id="deleteConnection" onClick={() => {}}>Удалить связи между полями</button></div><br />
+				<div id="erasingConnectionButton"><button id="eraseConnection" onClick={() => {(document.getElementById("connectionsArea") as HTMLElement).innerText = "";}}>Удалить указанные связи</button></div><br />				
+				<div id="insertionConnectionButton"><button id="insertConnection" onClick={() => {}}>Связать поля</button></div><br />
+				<div id="deletingConnectionButton"><button id="deleteConnection" onClick={() => {}}>Удалить связи между полями</button></div><br />
 				<div id="connMessage"></div>
 			</div>
 			:
