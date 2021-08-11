@@ -26,6 +26,21 @@ class FieldConnections extends React.Component {
 					(checkboxes[i] as HTMLInputElement).disabled = true;
 					(checkboxes[i] as HTMLInputElement).checked = false;
 				}
+				let jsons = JSON.parse(this.state.items);
+				for (let j = 0; j < jsons.length; j++)
+				{
+					let field = jsons[j];					
+					if (field.connectedFields !== null && field.id === selectedKey && selectedValue in field.connectedFields && field.connectedFields[selectedValue] !== null && field.connectedFields[selectedValue].length > 0)
+					{
+						for (let v = 0; v < field.connectedFields[selectedValue].length; v++)
+						{
+							if (checkboxes[i].id === field.connectedFields[selectedValue][v])
+							{
+								(checkboxes[i] as HTMLInputElement).checked = true;
+							}
+						}						
+					}
+				}
 				
 			}
 		}		
