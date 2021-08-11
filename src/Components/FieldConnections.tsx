@@ -1,5 +1,4 @@
 import React from 'react';
-import { convertTypeAcquisitionFromJson } from 'typescript';
 
 class FieldConnections extends React.Component {
 
