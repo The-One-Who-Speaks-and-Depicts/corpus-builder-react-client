@@ -8,6 +8,8 @@ import Main from './Main.tsx';
 import {UserContext} from "../UserContext.tsx";
 // @ts-ignore
 import ManuscriptForm from '../Components/ManuscriptForm.tsx';
+//@ts-ignore
+import FieldAdditionForm from '../Components/FieldAdditionForm.tsx';
 
 const postManuscript = async () => {
 
@@ -34,13 +36,14 @@ const deleteManuscript = async () => {
 }
 
 export function Manuscript() {
-	const {user} = useContext(UserContext);
+	const { user } = useContext(UserContext);
 	return (<div>
 	{user ?
 			<div>
 				<ManuscriptsList /><button id="editManuscript" onClick={() => editManuscript()}>Изменить документ</button><button id="deleteManuscript" onClick={() => deleteManuscript()}>Удалить документ</button>
 				<ManuscriptForm />
 				<div id="insertionButton"><button id="postManuscript" onClick={() => postManuscript()}>Внести изменения в базу данных</button></div><br />
+				<FieldAdditionForm />
 				<div id="message"></div>
 			</div>
 			:
