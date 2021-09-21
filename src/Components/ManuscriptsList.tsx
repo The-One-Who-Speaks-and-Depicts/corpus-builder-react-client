@@ -5,7 +5,7 @@ class ManuscriptsList extends React.Component {
 	state = {
 			error: null,
 			isLoaded: false,
-			items: ""		
+			items: ""
 		}
 
 	componentDidMount() {
@@ -26,10 +26,10 @@ class ManuscriptsList extends React.Component {
 		const texts = items.replace("[", "Any,").replace("]", "").replace(/"/g, "").split(",");
 		const names = texts.map(t => <option>{t}</option>);
 		return (
-		<div>
-		{!isLoaded && <div>Loading manuscripts...</div>}		
+		<div id="ManuscriptsList">
+		{!isLoaded && <div>Loading manuscripts...</div>}
 		{isLoaded && !error &&
-			<select>
+			<select id="dbManuscripts">
 				{names}
 			</select>
 		}
