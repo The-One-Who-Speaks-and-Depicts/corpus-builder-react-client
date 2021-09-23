@@ -2,6 +2,15 @@ import React from 'react';
 
 class FieldForm extends React.Component {
 
+    OnPossessedChange = async () => {
+        (document.getElementById("host") as HTMLSelectElement).innerHTML = "";
+        let levels: string[] = ["Рукопись", "Секция", "Сегмент", "Клауза", "Токен", "Графема"];
+        let level: number = (document.getElementById("possessed") as HTMLSelectElement).selectedIndex;
+        for (let i = 0; i <= level; i++) {
+            (document.getElementById("host") as HTMLElement).innerHTML += "<option>" + levels[i] + "</option>";
+        }
+    }
+
     render(){
         return (
             <div id="addField">
@@ -15,7 +24,7 @@ class FieldForm extends React.Component {
                     <textarea id="FieldVals"></textarea><br />
                     <input type="checkbox" id="multiplied"  /> <span id="subscription">Может ли одна единица обладать несколькими значениями признака?</span><br />
                     <span id="subscription">Единица, несущая признак:</span><br />
-                    <select id="possessed">
+                    <select id="possessed" onChange={() => this.OnPossessedChange()}>
                         <option>Рукопись</option>
                         <option>Секция</option>
                         <option>Сегмент</option>
