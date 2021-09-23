@@ -14,8 +14,8 @@ class FieldForm extends React.Component {
                     <span id="subscription">Значения признака (вводите по одному в строчке, без знаков препинания):</span><br />
                     <textarea id="FieldVals"></textarea><br />
                     <input type="checkbox" id="multiplied"  /> <span id="subscription">Может ли одна единица обладать несколькими значениями признака?</span><br />
-                    <span id="subscription">Единица, для которой размечается признак:</span><br />
-                    <select id="host">
+                    <span id="subscription">Единица, несущая признак:</span><br />
+                    <select id="possessed">
                         <option>Рукопись</option>
                         <option>Секция</option>
                         <option>Сегмент</option>
@@ -23,8 +23,8 @@ class FieldForm extends React.Component {
                         <option>Токен</option>
                         <option>Графема</option>
                     </select><br/>
-                    <span id="subscription">Единица, несущая признак:</span><br />
-                    <select id="possessed">
+                    <span id="subscription">Единица, в рамках которой размечается признак:</span><br />
+                    <select id="host">
                         <option>Рукопись</option>
                         <option>Секция</option>
                         <option>Сегмент</option>
