@@ -10,10 +10,10 @@ class FieldForm extends React.Component {
                     <textarea id="FieldName"></textarea><br />
                     <span id="subscription">Описание признака:</span><br />
                     <textarea id="FieldDesc"></textarea><br />
-                    <input type="checkbox" id="restricted"  /> <span id="subscription">Ограничено ли множество значений пользователем, или значения уникальны и присваиваются в процессе ввода?:</span><br />
+                    <input type="checkbox" id="restricted"  /> <span id="subscription">Ограничено ли множество значений пользователем?:</span><br />
                     <span id="subscription">Значения признака (вводите по одному в строчке, без знаков препинания):</span><br />
                     <textarea id="FieldVals"></textarea><br />
-                    <input type="checkbox" id="multiplied"  /> <span id="subscription">Может ли одна единица обладать несколькими значениями признака?</span><br />                  
+                    <input type="checkbox" id="multiplied"  /> <span id="subscription">Может ли одна единица обладать несколькими значениями признака?</span><br />
                     <span id="subscription">Единица, для которой размечается признак:</span><br />
                     <select id="host">
                         <option>Рукопись</option>
@@ -36,5 +36,5 @@ class FieldForm extends React.Component {
         );
     }
 }
-                    
+
 export default FieldForm;

@@ -6,21 +6,19 @@ class FieldAdditionForm extends React.Component {
     call = false;
 
     addDaughterLevel() {
-        let daughterPlaceId: number = document.getElementsByClassName("FieldMother").length;
-        console.log(daughterPlaceId);
         if (!this.call) {
+            let daughterPlaceId: string = "FieldMother_" + document.getElementsByClassName("FieldMother").length.toString();
             this.call = true;
-            ReactDOM.render(<FieldAdditionForm />, document.getElementById(daughterPlaceId.toString()));
+            ReactDOM.render(<FieldAdditionForm />, document.getElementById(daughterPlaceId));
         }
     }
 
     render() {
-        let nextId: number = document.getElementsByClassName("FieldMother").length + 1;
-        console.log(nextId);
+        let nextId: string = "FieldMother_" + (document.getElementsByClassName("FieldMother").length + 1).toString();
         return (
             <div className="FieldMother">
                 <button onClick={() => this.addDaughterLevel()}>AddDaughterLevelClick</button>
-                <div id={nextId.toString()}></div>
+                <div id={nextId}></div>
             </div>
         );
     }
